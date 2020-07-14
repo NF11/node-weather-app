@@ -23,14 +23,14 @@ app.use(express.static(publicDirectoryPath));
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather",
-    name: "Fares Nassim",
+    name: "Nassim Fares",
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Me",
-    name: "Fares Nassim",
+    name: "Nassim Fares",
   });
 });
 
@@ -38,7 +38,7 @@ app.get("/help", (req, res) => {
   res.render("help", {
     helpText: "This is some helpful text.",
     title: "Help",
-    name: "Fares Nassim",
+    name: "Nassim Fares",
   });
 });
 
@@ -54,7 +54,7 @@ app.get("/weather", (req, res) => {
         errorMessage: err + "no address found",
       });
     }
-    forecast(latitude, longitude, (err, { temp }) => {
+    forecast(latitude, longitude, (err, { temp, humidity, description }) => {
       if (err) {
         return res.send({
           errorMessage: err + "no address found",
@@ -63,6 +63,8 @@ app.get("/weather", (req, res) => {
       res.send({
         location,
         temp,
+        humidity,
+        description,
       });
     });
   });
@@ -71,7 +73,7 @@ app.get("/weather", (req, res) => {
 app.get("/help/*", (req, res) => {
   res.render("404", {
     title: "404",
-    name: "Fares Nassim",
+    name: "Nassim Fares",
     errorMessage: "Help article not found.",
   });
 });
@@ -79,7 +81,7 @@ app.get("/help/*", (req, res) => {
 app.get("*", (req, res) => {
   res.render("404", {
     title: "404",
-    name: "Fares Nassim",
+    name: "Nassim Fares",
     errorMessage: "Page not found.",
   });
 });

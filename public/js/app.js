@@ -13,8 +13,14 @@ form.addEventListener("submit", (event) => {
       if (data.errorMessage) {
         return (message_1.textContent = data.errorMessage);
       }
-      message_1.textContent = "The temperature for " + data.location;
-      message_2.textContent = "is " + data.temp;
+      message_1.textContent = "The forecast for " + data.location;
+      message_2.textContent =
+        "Temperature is " +
+        data.temp +
+        " Humidity percentage is " +
+        data.humidity +
+        " The description is " +
+        data.description;
     });
   });
 });

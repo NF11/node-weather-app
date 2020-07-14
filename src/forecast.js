@@ -9,7 +9,8 @@ const forecast = (latitude, longitude, callback) => {
         encodeURIComponent(latitude) +
         "&lon=" +
         encodeURIComponent(longitude) +
-        "&units=metric&appid=" +
+        "&units=metric" +
+        "&appid=" +
         KEYWEATHER,
       json: true,
     },
@@ -21,6 +22,8 @@ const forecast = (latitude, longitude, callback) => {
       } else {
         callback(undefined, {
           temp: response.body.current.temp,
+          humidity: response.body.current.humidity,
+          description: response.body.current.weather[0].description,
         });
       }
     }
